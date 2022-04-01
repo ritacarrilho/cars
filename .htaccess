@@ -1,0 +1,16 @@
+#Vérification de la présence du module mod_rewrite
+<IfModule mod_rewrite.c> 
+    #Activation du muteur de réécriture
+    RewriteEngine On
+
+    #Conditions pour la règle (RewriteRule) qui suit
+    # Les conditions s'appliquent avec ET logique
+    #Tutes les conditions doivent être vraies pour appliquer la règle
+    #!-f = L'URL ne pointe pas vers un fichier phisique
+    #!-d = L'URL ne pointe pas vers un fichier phisique
+    RewriteCond %{REQUEST_FILENAME} !-d 
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+        #
+        RewriteRule ^ index.php [QSA,L]
+</IfModule>
