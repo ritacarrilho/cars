@@ -21,4 +21,4 @@ require_once PATH_ROOT . 'app' . DS . 'router.php';
 // Démarrage de l'application (c'est le router qui provoque la suite)
 routerStart();
 
-$mysqli_close( $mysqli ); // fermer le tunnel car on a plus besoin
+mysqli_close( $mysqli ); // fermer le tunnel car on a plus besoin

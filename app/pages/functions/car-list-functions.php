@@ -10,7 +10,20 @@ function carListRender() {
 }
 
 function carListDataGetAll() {
+    global $mysqli;
     $result = [];
+
+    $q = 'SELECT cars.id, cars.title, cars.price, brands.label as brand_name
+            FROM cars 
+            JOIN brands ON barsnd.id = cars.brand_id';
+
+    $q_result = mysqli_query($mysqli, $q);
+
+    if($q_result) {
+        while ( $car = mysqli_fetch_assoc($q_result)) {
+            $result[] = $car;
+        }
+    }
 
     return $result;
 }

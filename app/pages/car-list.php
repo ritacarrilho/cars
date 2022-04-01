@@ -6,7 +6,7 @@
     <ul>
         <?php foreach( $arr_cars as $car ): ?>
             <li>
-                <a href="/voiture?=$car['id']">Detail</a>
+                <a href="/voiture?= <?php echo $car['id']?>"></a>
                 <h2><?php echo $car['title'] ?></h2>
                 <p><?php echo $car['brand-name']?></p>
                 <p>
