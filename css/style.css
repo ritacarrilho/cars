@@ -1,0 +1,455 @@
+/* ----- Styles généraux ----- */
+/* Déclaration de variables CSS */
+:root {
+    --main-font: 'Raleway', sans-serif;
+    --title-font: 'Merriweather', serif;
+    --white: #fefefe;
+}
+
+body {
+    background-color: var(--white); /* Exemple d'utilisation d'une variable */
+    color: #222;
+    font-family: var(--main-font);
+    font-weight: 400; /* equivalent de normal */
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    display: block;
+    font-family: var(--title-font);
+    font-weight: 700; /* equivalent de bold */
+    text-align: center;
+}
+
+h1, .h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+h2, .h2 {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+h3, .h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+h4, .h4 {
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+h5, .h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+h6, .h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+a,
+a:link,
+a:visited {
+    color: #dd005c;
+    font-weight: 700;
+    transition: color 300ms;
+}
+
+    a::after {
+        content: '🔗';
+        display: inline-block;
+        transform: scale(1) rotateX(0) rotateY(0) rotateZ(0);
+        transition: transform 800ms;
+    }
+
+        a:hover::after,
+        a:focus::after,
+        a:active::after {
+            transform: scale(2) rotateX(2.5turn) rotateY(3.5turn) rotateZ(4.5turn);
+        }
+
+
+    a:hover,
+    a:focus,
+    a:active {
+        color: #ff5ca0;
+    }
+
+/* ----- Framework (éléments réutilisables) ----- */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.photo-frame {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* permet de masquer ce qui dépasse du bloc */
+}
+
+.section-highlight {
+    background-color: #dd005c;
+}
+
+/* ----- Styles de page ----- */
+
+/* ---- HEADER ---- */
+.header-top > .container {
+    padding: 0;
+}
+
+.logo {
+    background-color: #ffae00;
+    color: #333;
+    font-family: 'Merriweather', serif;
+    font-size: 28px;
+    font-weight: 700;
+    padding: 15px;
+}
+
+/* --- Menu --- */
+.main-menu-w {
+    position: relative;
+}
+
+    /* - Menu nav - */
+    .main-menu-w nav {
+        background-color: #dd005c;
+        display: none;
+    }
+
+        .main-menu-w.opened nav {
+            display: block;
+        }
+
+    .main-menu-w li {
+        border-top: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    .main-menu-w a {
+        background-color: transparent;
+        color: #fff;
+        display: block;
+        padding: 15px;
+        text-align: center;
+        transition: background 300ms;
+    }
+
+        .main-menu-w a::after {
+            content: none;
+        }
+
+        .main-menu-w a:focus,
+        .main-menu-w a:active {
+            background-color: #ff5ca0;
+        }
+
+    /* - Burger - */
+    .main-menu-w button {
+        align-items: stretch;
+        background-color: #dd005c;
+        display: flex;
+        flex-direction: column;
+        height: 46px;
+        justify-content: space-between;
+        top: -56px;
+        padding: 6px;
+        position: absolute;
+        right: 10px;
+        width: 46px;
+    }
+
+        .main-menu-w button span {
+            background-color: #ff5ca0;
+            border-radius: 3px;
+            flex: 0 0 6px;
+            transition: transform 500ms;
+        }
+
+        .main-menu-w button span:nth-child(1) {
+            transform: translateY(0) rotateZ(0);
+        }
+
+            .main-menu-w.opened button span:nth-child(1) {
+                transform: translateY(14px) rotateZ(-3.125turn);
+            }
+
+        .main-menu-w button span:nth-child(2) {
+            transform: rotateX(0);
+        }
+
+            .main-menu-w.opened button span:nth-child(2) {
+                transform: rotateX(.25turn)
+            }
+
+        .main-menu-w button span:nth-child(3) {
+            transform: translateY(0) rotateZ(0);
+        }
+
+            .main-menu-w.opened button span:nth-child(3) {
+                transform: translateY(-14px) rotateZ(3.125turn);
+            }
+
+
+header .photo-frame {
+    height: 250px;
+}
+
+
+/* ---- MAIN ---- */
+main section {
+    padding: 25px 0;
+}
+
+/* - Articles - */
+.latest-articles li {
+    padding: 10px;
+}
+
+.latest-articles a {
+    color: inherit; /* Rétablissement de la couleur héritée (de <body> dans ce cas) */
+    display: flex;
+    flex-direction: row-reverse; /* Inversion visuelle des ordres du texte et de la photo */
+    font-weight: 400;
+}
+
+    .latest-articles a::after {
+        content: none;
+    }
+
+.latest-articles .article-info {
+    background-color: #dd005c;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+    /*
+        :active: la couleur change lorsque l'on pose le doigt
+        :focus: la couleur reste lorsque l'on relâche le doigt (le temps que la page se recharge)
+    */
+    .latest-articles a:focus .article-info,
+    .latest-articles a:active .article-info {
+        background-color: #ff5ca0;
+    }
+
+.latest-articles .h6 {
+    text-align: start;
+}
+
+.latest-articles .article-photo {
+    /* order: -1;  2éme possibilité d'inversion visuelle des ordres du texte et de la photo */
+}
+
+.latest-articles .photo-frame {
+    height: 100px;
+    width: 100px;
+}
+
+/* ---- FOOTER ---- */
+.footer-top {
+    background-color: #ffae00;
+    text-align: center;
+}
+
+    .footer-top .container > * {
+        padding: 25px 0;
+    }
+
+
+.footer-bottom {
+    padding: 15px;
+}
+
+/* -----  Responsive ----- */
+/* --- Tablettes et +: à partir de 768px de large --- */
+@media (min-width: 768px) {
+
+    .latest-articles .photo-frame img {
+        width: 100%; /* Réadaptation du cadrage */
+    }
+
+    .footer-top > .container {
+        display: flex;
+    }
+
+        .footer-top > .container > * {
+            flex-grow: 1;
+        }
+
+        .footer-top > .container > :first-child {
+            padding-right: 15px;
+        }
+
+        .footer-top > .container > :last-child {
+            padding-left: 15px;
+        }
+
+}
+
+/* --- Tablettes uniquement: De 768px à 991px de large --- */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    header .photo-frame {
+        /* vh (viewport height): unité valant 1% de la hauteur de la zone d'affichage */
+        height: 50vh;
+    }
+
+    /* - Articles - */
+    .latest-articles {
+        display: flex;
+        justify-content: space-around;
+    }
+
+        .latest-articles li {
+            flex: 0 0 360px;
+        }
+
+        .latest-articles a {
+            flex-direction: column-reverse;
+            height: 100%; /* Compensation de la hauteur en fonction du contenu */
+        }
+
+        .latest-articles .photo-frame {
+            height: 150px;
+            width: auto;
+        }
+    
+}
+
+/* --- Petits Laptop et +: à partir de 992px de large --- */
+@media (min-width: 992px) {
+
+    /* ----- Framework (éléments réutilisables) ----- */
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        width: 960px;
+    }
+
+    /* ----- Styles de page ----- */
+    .header-top {
+        position: absolute;
+        width: 100%;
+    }
+
+    .logo {
+        background-color: transparent;
+        color: #fefefe;
+        text-shadow: 
+            1px 1px 0 rgba(51, 51, 51, .8),
+            0 0 36px #333;
+    }
+    
+    /* - Menu nav - */
+    .main-menu-w nav {
+        background-color: transparent;
+        display: block;
+    }
+
+        .main-menu-w nav > ul {
+            display: flex;
+        }
+
+            .main-menu-w nav > ul ul {
+                display: none;
+                position: absolute;
+                background-color: #dd005c;
+            }
+
+                .main-menu-w nav > ul ul a {
+                    border-top: 1px solid rgba(255, 255, 255, .5);
+                    text-align: left;
+                }
+
+                .main-menu-w nav > ul ul ul {
+                    display: none;
+                    left: 100%;
+                    top: 0;
+                }
+
+    .main-menu-w li:hover > ul {
+        display: block;
+    }
+    
+    .main-menu-w li {
+        border-top: 0;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    .main-menu-w a:hover {
+        background-color: #ff5ca0;
+    }
+
+    /* - Burger - */
+    .main-menu-w button {
+        display: none;
+    }
+    
+    header .photo-frame {
+        height: 70vh;
+    }
+
+    .welcome-part {
+        display: flex;
+    }
+
+        .welcome-part > :first-child {
+            padding-right: 15px;
+        }
+
+        .welcome-part > :last-child {
+            flex: 0 0 300px;
+            padding-left: 15px;
+        }
+
+    /* - Articles - */
+    .latest-articles a {
+        color: var(--white);
+        display: block;
+        position: relative;
+    }
+
+    .latest-articles .article-info {
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, #dd005c, transparent, transparent, transparent);
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+    }
+
+        .latest-articles .h6 {
+            text-shadow: 1px 1px 0 rgb(51 51 51 / 80%), 0 0 36px #333;
+        }
+
+        .latest-articles p {
+            bottom: -100%;
+            background-color: rgba(255, 0, 92, .6);
+            left: 0;
+            padding: 10px;
+            position: absolute;
+            transition: bottom 200ms;
+            width: 100%;
+        }
+
+            .latest-articles a:hover p {
+                bottom: 0;
+            }
+
+    .latest-articles .photo-frame {
+        height: 180px;
+        width: auto;
+    }
+
+
+}
