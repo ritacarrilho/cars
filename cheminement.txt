@@ -1,0 +1,9 @@
+1 - Requête client
+2 - La requête arrive dans .htaccess: si le fichier n'existe pas => on redireccione index.php
+3 - index.php : initialisations et démarrages à travers le routerStart()
+4 - routerStart(): Lit l'URL demandée et dirige vers le code en fonction de celle-ci 
+    - Si aucune correspondance prévu => fonction qui affiche la page 404
+    - Sinon on lance la fonction qui affiche la page demandée
+5 - Fonction de la page (ex. homeRender() ): 
+    5.1 - Récolte des données utiles à la page
+    5.2 - Lance l'affichage du code HTML

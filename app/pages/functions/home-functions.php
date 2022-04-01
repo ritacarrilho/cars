@@ -2,6 +2,9 @@
 <?php
 
 function homeRender() {
-    // TODO: Les chose à faire avant d'afficher l'accueil
+    $html_title = 'Acueill';
+    $page_greeting = 'Bonjour voyageur';
+    require_once PATH_ROOT .'app'. DS .'pages'. DS . 'partials' . DS . 'header.html.php';
     require_once PATH_ROOT .'app'. DS .'pages'. DS . 'home.php';
+    require_once PATH_ROOT .'app'. DS .'pages'. DS . 'partials' . DS . 'footer.html.php';
 }
